@@ -11,8 +11,6 @@ namespace TrackMaticApp
             _taxCalculator = new TaxCalculator();
         }
 
-
-
         public void TaxProcess(Cart cart)
         {
             if (cart.IsTaxed)
@@ -23,5 +21,6 @@ namespace TrackMaticApp
                 TaxCost = _taxCalculator.CalculateTax(cart),
             };
         }
+
     }
 }

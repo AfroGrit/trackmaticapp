@@ -6,4 +6,9 @@ namespace TrackMaticApp
     {
         public float TaxCost { get; set; }
     }
+
+    //public float CalcTaxCost()
+    //{
+
+    //}
 }

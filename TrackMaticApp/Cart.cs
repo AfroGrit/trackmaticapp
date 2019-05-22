@@ -9,15 +9,14 @@ namespace TrackMaticApp
 
         public string Item { get; set; }
         public string Origin { get; set; }
+
         public float ItemPrice { get; set; }
+
 
         public Tax Tax { get; set; }
 
 
         public float TotalPrice { get; set; }
-
-        public float Local { get; set; }
-        public float Imported { get; set; }
 
         // TODO - change accept local or imported
         public bool IsTaxed
@@ -26,4 +25,3 @@ namespace TrackMaticApp
         }
     }
 }
-

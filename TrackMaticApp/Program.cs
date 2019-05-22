@@ -6,12 +6,16 @@ namespace TrackMaticApp
     {
         static void Main(string[] args)
         {
-            var cartEngine = new CartEngine(new TaxCalculator());
 
             var cart = new Cart { Item = "Book", ItemPrice = 12.49f , Origin = "L"};
 
-            // var cart_2 = new Cart { Item = "Music CD", ItemPrice = 14.99f, Origin = "L" };
-            // var cart_2 = new Cart { Item = "Book", ItemPrice = 12.49f, Origin = "L" };
+            Console.WriteLine("Inside a cart:" +
+            	"\nID: {0} " +
+            	"\nPrice: {1} " +
+            	"\nOrigin: {2}", 
+                cart.Item, cart.ItemPrice, cart.Origin);
+
+            var cartEngine = new CartEngine(new TaxCalculator());
 
             cartEngine.TaxProcess(cart);
         }

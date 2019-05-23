@@ -13,13 +13,7 @@ namespace TrackMaticApp
 
         public void TaxProcess(Cart cart)
         {
-            if (cart.IsTaxed)
-                throw new System.InvalidOperationException("Already taxed");
 
-            cart.Tax = new Tax
-            {
-                TaxCost = _taxCalculator.CalculateTax(cart),
-            };
         }
 
     }

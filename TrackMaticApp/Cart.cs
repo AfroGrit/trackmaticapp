@@ -1,27 +1,67 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+
 
 namespace TrackMaticApp
 {
-    public class Cart
+    public enum Type
     {
-        // For dbs
-        public int Id { get; set; }
+        Local,
+        Import,
+        Exempt
+    }
 
-        public string Item { get; set; }
-        public string Origin { get; set; }
+    public class Cart : INotifyPropertyChanged, IDisposable
+    {
+        private string _name;
 
-        public float ItemPrice { get; set; }
+        public Type Type { get; }
 
+        public List<string> Item { get; }
 
-        public Tax Tax { get; set; }
-
-
-        public float TotalPrice { get; set; }
-
-        // TODO - change accept local or imported
-        public bool IsTaxed
+        public Cart(Type type)
         {
-            get { return Tax != null; }
+            Type = type;
+            Item = new List<string>();
         }
+
+        public Cart(Type type, string name, double amount) : this(type)
+        {
+            Name = name;
+            Amount = amount;
+        }
+
+        public string Name
+        {
+            get { return _name; }
+            set
+            {
+                _name = value;
+                OnPropertyChanged("Name");
+            }
+        }
+
+        public double Amount { get; set; }
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public override string ToString()
+        {
+            return Name;
+        }
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+
+        public void Dispose()
+        {
+        }
+
+
     }
 }

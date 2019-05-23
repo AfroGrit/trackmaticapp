@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace TrackMaticApp
 {
@@ -7,17 +8,19 @@ namespace TrackMaticApp
         static void Main(string[] args)
         {
 
-            var cart = new Cart { Item = "Book", ItemPrice = 12.49f , Origin = "L"};
+            var ShoppingList = new List<Cart>()
 
-            Console.WriteLine("Inside a cart:" +
-            	"\nID: {0} " +
-            	"\nPrice: {1} " +
-            	"\nOrigin: {2}", 
-                cart.Item, cart.ItemPrice, cart.Origin);
+            {
+                new Cart(Type.Local, "Book", 12.49),
+                new Cart(Type.Local, "Music CD", 14.99),
+                new Cart(Type.Local, "Chocolate", 0.85)
+            };
 
-            var cartEngine = new CartEngine(new TaxCalculator());
-
-            cartEngine.TaxProcess(cart);
+            Console.WriteLine(" Output");
+            for (int i = 0; i < ShoppingList.Count; ++i)
+            {
+                Console.WriteLine("id: {0} {1}: {2:C} ", i, ShoppingList[i].Name, ShoppingList[i].Amount);
+            }
         }
     }
 }
